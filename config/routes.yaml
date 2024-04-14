@@ -1,0 +1,11 @@
+controllers:
+    resource:
+        path: ../src/Shared/Controller/
+        namespace: App\Shared\Controller
+    type: attribute
+
+kitchenController:
+    resource:
+        path: ../src/Kitchen/Application/Controller
+        namespace: App\Kitchen\Application\Controller
+    type: attribute

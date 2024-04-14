@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create New Pizza{% endblock %}
+{% block body %}
+    <h3>Create Pizza</h3>
+    {{ form_start(createPizzaForm) }}
+    {{ form_row(createPizzaForm.name) }}
+    {{ form_row(createPizzaForm.description) }}
+    {{ form_row(createPizzaForm.size) }}
+    {{ form_row(createPizzaForm.price) }}
+    {{ form_row(createPizzaForm.ingredients) }}
+    <button class="btn btn-primary mt-2" type="submit">
+        Create Pizza
+    </button>
+    {{ form_end(createPizzaForm) }}
+
+{% endblock %}

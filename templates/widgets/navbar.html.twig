@@ -1,0 +1,25 @@
+<nav class="sidebar dark_sidebar">
+    <div class="logo d-flex justify-content-between">
+        <h3>PIZZA HOUSE</h3>
+        <div class="sidebar_close_icon d-lg-none">
+            <i class="ti-close"></i>
+        </div>
+    </div>
+    <ul id="sidebar_menu">
+        <li class>
+            <a class="has-arrow" href="#" aria-expanded="false">
+                <div class="nav_icon_small">
+                    <img src="{{ asset('assets/images/home/home1.jpg') }}" alt>
+                </div>
+                <div class="nav_title">
+                    <span>Pizza </span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="{{ path('app_kitchen_pizza_create') }}">Create Pizza</a></li>
+                <li><a href="{{ path('app_kitchen_pizza_show') }}">Show All Pizzaz</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>

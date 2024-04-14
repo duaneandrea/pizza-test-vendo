@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show Pizzas{% endblock %}
+{% block body %}
+    <table class="table">
+        <tr>
+            <th>ID #</th>
+            <th>PIZZA NAME</th>
+            <th>INGREDIENT</th>
+            <th>SIZE</th>
+            <th>PRICE</th>
+            <th>ACTION</th>
+        </tr>
+        {% for eachPizza in data %}
+            <tr>
+                <td>{{ eachPizza.id }}</td>
+                <td>{{ eachPizza.name }}</td>
+                <td>{{ eachPizza.ingredient.name }}</td>
+                <td>{{ eachPizza.size }}</td>
+                <td>{{ eachPizza.price }}</td>
+                <td><a href="{{ path('app_show_single_pizza',{id:eachPizza.id}) }}">View Pizza</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
