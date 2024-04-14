@@ -41,6 +41,20 @@ The main Aggregate Roots in the Kitchen domain are:
 
 These Aggregate Roots encapsulate the relevant entities and value objects, ensuring the integrity of the domain model.
 
+## User Stories
+
+1. **As a kitchen staff member, I want to be notified when a new order is placed and easily access the order details.**
+   - This user story is addressed by the `PizzaCreatedEvent` and the `PizzaCreatedEventHandler`, which update the Inventory and notify the kitchen staff of new orders.
+   - The `PizzaRepository` and the `OrderItem` entity provide the necessary information and access to the order details.
+
+2. **As a store manager, I want to view real-time ingredient inventory and automatically trigger purchase orders when stock falls below a threshold.**
+   - The `InventoryRepository` and the `InventoryUpdatedEvent` handle the real-time tracking and updating of ingredient inventory.
+   - The `InventoryUpdatedEventHandler` is responsible for triggering purchase orders when stock levels fall below the defined thresholds.
+
+3. **As a kitchen chief, I want to be able to create the type of pizzas that we are going to sell, their names, their price and their required ingredients.**
+   - The `PizzaService` and the `PizzaRepository` provide the functionality to create, update, and manage the pizzas, including their names, prices, and required ingredients.
+   - The `Recipe` entity and the `PizzaSize` and `PizzaPrice` value objects encapsulate the necessary information for defining a pizza.
+
 ## Events and Message Handlers
 
 The prototype includes the following events and message handlers:
@@ -60,13 +74,8 @@ These events and message handlers help maintain the consistency of the domain mo
 The prototype includes the following repositories:
 
 1. `PizzaRepository`
-   - Responsible for CRUD operations on the `Pizza` aggregate
-
 2. `InventoryRepository`
-   - Responsible for CRUD operations on the `Inventory` aggregate
-
 3. `KitchenEventRepository`
-   - Responsible for CRUD operations on the `KitchenEvent` aggregate
 
 These repositories abstract the data persistence layer and provide a consistent interface for interacting with the domain model.
 
@@ -75,14 +84,8 @@ These repositories abstract the data persistence layer and provide a consistent 
 The prototype includes the following application services:
 
 1. `PizzaService`
-   - Handles the creation and management of `Pizza` entities
-   - Triggers the `PizzaCreatedEvent` when a new pizza is created
-
 2. `InventoryService`
-   - Manages the Inventory, including adjusting stock levels and triggering reorders
-
 3. `KitchenEventService`
-   - Handles the creation and management of `KitchenEvent` entities
 
 These application services coordinate the domain logic and ensure that the business rules are properly enforced.
 
@@ -98,12 +101,18 @@ To set up the Kitchen domain prototype, follow these steps:
 
 The application will be available at `http://localhost:8000`.
 
-## Next Steps
+## Explanations
 
-This prototype focuses on the Kitchen domain and provides a solid foundation for further development. The next steps could include:
+1. **Functionality Decisions**:
+   - The prototype focuses on the core functionality of the Kitchen domain, including pizza preparation, inventory management, and kitchen event handling.
+   - The use of the Command and Query pattern, along with the event-driven architecture, ensures a clean separation of concerns and enables future scalability.
+   - The domain model is designed to be extensible, allowing for the addition of new features or the modification of existing ones without affecting the overall system.
 
-- Implementing the other domains (e.g., Storage, RestaurantRoom, Personnel, Procurement, SalesAndPromotion)
-- Integrating the domains through events and message queues
-- Developing the user interface and API endpoints
-- Adding authentication and authorization
-- Implementing tests and CI/CD pipelines
+2. **Architecture Decisions**:
+   - The Symfony framework was chosen for its robust infrastructure, extensive documentation, and strong community support, making it a suitable choice for building a modern, scalable web application.
+   - The use of Aggregate Roots, Entities, and Value Objects, along with the Repository pattern, aligns with the principles of Domain-Driven Design (DDD) and promotes maintainability and testability.
+   - The event-driven architecture, with the help of the Messenger component, enables asynchronous communication between different domains and fosters a loosely coupled design.
+
+3. **Getting the Application Running**:
+   - The steps outlined in the "Getting Started" section provide a straightforward way to set up the Kitchen domain prototype, including cloning the repository, installing dependencies, setting up the database, and running the development server.
+   - Once the setup is complete, you can access the Kitchen domain functionality at `http://localhost:8000`.
